@@ -79,6 +79,7 @@ services:
   odoo:
     profiles: ["odoo","bahmni-standard"]
     image: 'bahmni/odoo-16:${ODOO_IMAGE_TAG:?[ERROR]}'
+    platform: linux/amd64
     ports:
       - '8069:8069'
     volumes:
@@ -267,6 +268,7 @@ services:
 
   openmrsdb:
     image: ${OPENMRS_DB_IMAGE_NAME:?}
+    platform: linux/amd64
     restart: always
     profiles: ["emr","bahmni-standard", "metabase", "bahmni-mart"]
     command: "--sql-mode=${OPENMRS_DB_SQL_MODES:?}"
