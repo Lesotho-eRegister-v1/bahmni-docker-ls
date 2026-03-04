@@ -51,6 +51,9 @@ services:
       OPENMRS_ATOMFEED_USER: ${OPENMRS_ATOMFEED_USER:?}
       OPENMRS_ATOMFEED_PASSWORD: ${OPENMRS_ATOMFEED_PASSWORD:?}
       OPENELIS_DB_SERVER: ${OPENELIS_DB_SERVER}
+      OPENELIS_DB_NAME: ${OPENELIS_DB_NAME:?}
+      OPENELIS_DB_USERNAME: ${OPENELIS_DB_USER:?}
+      OPENELIS_DB_PASSWORD: ${OPENELIS_DB_PASSWORD:?}
     depends_on:
       openelisdb:
         condition: service_healthy
@@ -376,7 +379,7 @@ services:
     image: bahmni/implementer-interface:${IMPLEMENTER_INTERFACE_IMAGE_TAG:?}
     profiles: ["implementer-interface","emr","bahmni-standard"]
     #volumes:
-    #  - "${IMPLEMENTER_INTERFACE_CODE_PATH:?}/dist:/usr/local/apache2/htdocs/implementer_interface"
+    #  - "${IMPLEMENTER_INTERFACE_CODE_PATH:?}/dist:/usr/local/apache2/htdocs/implementer-interface"
     depends_on:
       - openmrs
     logging: *log-config
