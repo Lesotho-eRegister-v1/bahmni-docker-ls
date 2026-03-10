@@ -215,6 +215,7 @@ services:
   openmrs:
     profiles: ["emr","bahmni-standard", "bahmni-mart"]
     image: bahmni/openmrs:${OPENMRS_IMAGE_TAG:?}
+    platform: linux/amd64
     environment:
       TZ: ${TZ}
       OMRS_DB_NAME: ${OPENMRS_DB_NAME:?}
@@ -255,7 +256,7 @@ services:
       - "${CONFIG_VOLUME:?}:/etc/bahmni_config/:ro"
       - "bahmni-lab-results:/home/bahmni/uploaded_results"
       - "bahmni-uploaded-files:/home/bahmni/uploaded-files"
-      # - "${BAHMNI_OPENMRS_MODULES_PATH:?}/:/openmrs/data/modules/"
+      #- "${BAHMNI_OPENMRS_MODULES_PATH:?}/:/openmrs/data/modules/"
       - 'bahmni-patient-images:/home/bahmni/patient_images'
       - 'bahmni-document-images:/home/bahmni/document_images'
       - 'bahmni-clinical-forms:/home/bahmni/clinical_forms'
