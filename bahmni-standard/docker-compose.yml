@@ -259,7 +259,8 @@ services:
       - "${BAHMNI_OPENMRS_MODULES_PATH:?}/:/openmrs/data/modules/"
       - 'bahmni-patient-images:/home/bahmni/patient_images'
       - 'bahmni-document-images:/home/bahmni/document_images'
-      - 'bahmni-clinical-forms:/home/bahmni/clinical_forms'
+      # - 'bahmni-clinical-forms:/home/bahmni/clinical_forms'
+      - '${bahmni-clinical-forms:?}:/home/bahmni/clinical_forms'
       - 'configuration_checksums:/openmrs/data/configuration_checksums'
       - 'sms-token:/openmrs/data/sms-token'
     depends_on:
