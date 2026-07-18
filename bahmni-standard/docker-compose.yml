@@ -259,8 +259,7 @@ services:
       - "${BAHMNI_OPENMRS_MODULES_PATH:?}/:/openmrs/data/modules/"
       - 'bahmni-patient-images:/home/bahmni/patient_images'
       - 'bahmni-document-images:/home/bahmni/document_images'
-      # - 'bahmni-clinical-forms:/home/bahmni/clinical_forms'
-      - '${bahmni-clinical-forms:?}:/home/bahmni/clinical_forms'
+      - '${BAHMNI_CLINICAL_FORMS:?}:/home/bahmni/clinical_forms'
       - 'configuration_checksums:/openmrs/data/configuration_checksums'
       - 'sms-token:/openmrs/data/sms-token'
     depends_on:
@@ -358,7 +357,7 @@ services:
      - openmrsdb
      - openmrs
     volumes:
-     - 'bahmni-clinical-forms:/home/bahmni/clinical_forms'
+     - '${BAHMNI_CLINICAL_FORMS:?}:/home/bahmni/clinical_forms'
 
   bahmni-web:
     image: bahmni/bahmni-web:${BAHMNI_WEB_IMAGE_TAG:?}
@@ -576,7 +575,7 @@ services:
         - '../backup_restore/restore_docker_volumes.sh:/restore_docker_volumes.sh'
         - 'bahmni-patient-images:/mounts/bahmni-patient-images'
         - 'bahmni-document-images:/mounts/bahmni-document-images'
-        - 'bahmni-clinical-forms:/mounts/bahmni-clinical-forms'
+        - '${BAHMNI_CLINICAL_FORMS:?}:/mounts/bahmni-clinical-forms'
         - 'bahmni-lab-results:/mounts/bahmni-lab-results'
         - 'bahmni-queued-reports:/mounts/bahmni-queued-reports'
         - 'bahmni-uploaded-files:/mounts/bahmni-uploaded-files'
