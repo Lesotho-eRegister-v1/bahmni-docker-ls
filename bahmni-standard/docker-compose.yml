@@ -637,7 +637,7 @@ volumes:
   mart-data:
   bahmni-patient-images:
   bahmni-document-images:
-  bahmni-clinical-forms:
+  # bahmni-clinical-forms:
   dcm4chee-archive:
   bahmni-config:
   bahmni-lab-results:
