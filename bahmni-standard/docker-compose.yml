@@ -256,7 +256,8 @@ services:
       - "${CONFIG_VOLUME:?}:/etc/bahmni_config/:ro"
       - "bahmni-lab-results:/home/bahmni/uploaded_results"
       - "bahmni-uploaded-files:/home/bahmni/uploaded-files"
-      - "${BAHMNI_OPENMRS_MODULES_PATH:?}/:/openmrs/data/modules/"
+      - "${BAHMNI_OPENMRS_MODULES_PATH:?}/:/openmrs/data/modules/"      
+      - "${BAHMNI_DHIS_CONNECTOR_MAPPINGS:?}/:/openmrs/data/dhisconnector/"
       - 'bahmni-patient-images:/home/bahmni/patient_images'
       - 'bahmni-document-images:/home/bahmni/document_images'
       - '${BAHMNI_CLINICAL_FORMS:?}:/home/bahmni/clinical_forms'
