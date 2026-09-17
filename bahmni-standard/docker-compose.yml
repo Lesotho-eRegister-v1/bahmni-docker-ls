@@ -263,6 +263,7 @@ services:
       - '${BAHMNI_CLINICAL_FORMS:?}:/home/bahmni/clinical_forms'
       - 'configuration_checksums:/openmrs/data/configuration_checksums'
       - 'sms-token:/openmrs/data/sms-token'
+      - '${BAHMNI_OPENMRS_RUNTIME_PROPERTIES:?}:/openmrs/data/openmrs-runtime.properties'
     depends_on:
       - openmrsdb
     logging: *log-config
