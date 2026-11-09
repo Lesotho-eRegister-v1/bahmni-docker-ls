@@ -5,6 +5,14 @@ source "../backup_restore/restore_utils.sh"
 BAHMNI_DOCKER_ENV_FILE=.env
 source ${BAHMNI_DOCKER_ENV_FILE}
 
+if [ ! -f "${BAHMNI_DOCKER_ENV_FILE}.secrets" ]; then
+    log_error "${BAHMNI_DOCKER_ENV_FILE}.secrets not found. Copy ${BAHMNI_DOCKER_ENV_FILE}.secrets.example and fill it in."
+    exit 1
+fi
+set -a
+source "${BAHMNI_DOCKER_ENV_FILE}.secrets"
+set +a
+
 if [ $# -ne 1 ]
 then
 log_error "Missing input for restore-artifacts-path."
