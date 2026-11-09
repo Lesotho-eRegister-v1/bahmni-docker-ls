@@ -5,6 +5,14 @@ BAHMNI_DOCKER_ENV_FILE=.env
 source ../backup_restore/backup_utils.sh
 source ${BAHMNI_DOCKER_ENV_FILE}
 
+if [ ! -f "${BAHMNI_DOCKER_ENV_FILE}.secrets" ]; then
+    log_error "${BAHMNI_DOCKER_ENV_FILE}.secrets not found. Copy ${BAHMNI_DOCKER_ENV_FILE}.secrets.example and fill it in."
+    exit 1
+fi
+set -a
+source "${BAHMNI_DOCKER_ENV_FILE}.secrets"
+set +a
+
 # Set the backup folder path
 BACKUP_ROOT_FOLDER="./backup-artifacts"
 

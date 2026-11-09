@@ -202,6 +202,17 @@ if ! [ "$1" == "" ]; then
     file="$1"
 fi
 
+# Load passwords kept outside Git (e.g. .env.secrets for .env). Exported values
+# override the env file for every docker compose call below.
+if [ -f "${file}.secrets" ]; then
+    set -a
+    source "${file}.secrets"
+    set +a
+elif [ -f "${file}.secrets.example" ]; then
+    echo "Error: ${file}.secrets not found. Copy ${file}.secrets.example to ${file}.secrets and fill it in." >&2
+    exit 1
+fi
+
 case $option in
     1) start $file;;
     2) stop $file;;
